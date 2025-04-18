@@ -17,7 +17,40 @@ df = load_data()
 st.sidebar.header("Filtros")
 
 ufs = df['UF'].dropna().unique()
-uf_selecionado = st.sidebar.selectbox("Selecione o estado (UF):", ["Todos"] + sorted(ufs.tolist()))
+estados_brasil = [
+    "AC",  # Acre
+    "AL",  # Alagoas
+    "AP",  # Amapá
+    "AM",  # Amazonas
+    "BA",  # Bahia
+    "CE",  # Ceará
+    "DF",  # Distrito Federal (Brasília)
+    "ES",  # Espírito Santo
+    "GO",  # Goiás
+    "MA",  # Maranhão
+    "MT",  # Mato Grosso
+    "MS",  # Mato Grosso do Sul
+    "MG",  # Minas Gerais
+    "PA",  # Pará
+    "PB",  # Paraíba
+    "PR",  # Paraná
+    "PE",  # Pernambuco
+    "PI",  # Piauí
+    "RJ",  # Rio de Janeiro
+    "RN",  # Rio Grande do Norte
+    "RS",  # Rio Grande do Sul
+    "RO",  # Rondônia
+    "RR",  # Roraima
+    "SC",  # Santa Catarina
+    "SP",  # São Paulo
+    "SE",  # Sergipe
+    "TO"   # Tocantins
+]
+
+# mantem em ufs só o que tem em estados_brasil
+ufs = [uf for uf in ufs if uf in estados_brasil]
+
+uf_selecionado = st.sidebar.selectbox("Selecione o estado (UF):", ["Todos"] + sorted(ufs))
 
 if uf_selecionado != "Todos":
     df = df[df['UF'] == uf_selecionado]
