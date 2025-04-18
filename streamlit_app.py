@@ -80,9 +80,9 @@ for _, row in df.iterrows():
     <strong>Horário:</strong> {horario}<br> <br>
     
     <a href="{link}" target="_blank">Ver mais detalhes</a><br>
-    <img src="{imagem}" width="300px">
+    <img src="{imagem}" width="220px">
     """
-    popup = Popup(html, max_width=400)
+    popup = Popup(html, max_width=250)
 
     # Adiciona o marcador ao mapa
     folium.Marker(location=[lat, lon], popup=popup, icon=icon).add_to(mapa)
